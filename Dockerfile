@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-MAINTAINER Marcelo Gonçalves <marcelocg@gmail.com>
+MAINTAINER Christian Wesselhoeft <hi@xtian.us>
 
 # Elixir requires UTF-8
 RUN locale-gen en_US.UTF-8
@@ -30,8 +30,8 @@ ENV PHOENIX_VERSION 1.2.0
 # install the Phoenix Mix archive
 RUN mix archive.install --force https://github.com/phoenixframework/archives/raw/master/phoenix_new-$PHOENIX_VERSION.ez
 
-# install Node.js (>= 6.0.0) and NPM in order to satisfy brunch.io dependencies
+# install Node.js and NPM in order to satisfy brunch.io dependencies
 # See http://www.phoenixframework.org/docs/installation#section-node-js-5-0-0-
-RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - && apt-get install -y nodejs
+RUN apt-get install -y nodejs --no-install-recommends
 
 WORKDIR /code
