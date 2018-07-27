@@ -15,11 +15,6 @@ RUN apt-get install -y curl wget git make sudo gnupg \
     && dpkg -i erlang-solutions_1.0_all.deb \
     && apt-get update \
     && rm erlang-solutions_1.0_all.deb \
-    # For some reason, installing Elixir tries to remove this file
-    # and if it doesn't exist, Elixir won't install. So, we create it.
-    # Thanks Daniel Berkompas for this tip.
-    # http://blog.danielberkompas.com
-    && touch /etc/init.d/couchdb \
     # install latest elixir package
     && apt-get install -y elixir erlang-dev erlang-dialyzer erlang-parsetools \
     # clean up after ourselves
